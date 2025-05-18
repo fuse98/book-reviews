@@ -5,7 +5,6 @@ Desing and architect highly sacalable and robust application using Go
 By Joytiwswarup Raiturkar
 
 
-
 ## Chapter 1 Building Big with Go
 
 This chapter explores:
@@ -75,4 +74,34 @@ The architect should take ownership of the architecture and design meaning:
 * Coach and mentor developers
 
 
+### Microservices
 
+The basic concept of a microservice is simple—it's a simple, standalone application that does one thing only and does that one thing well.
+
+The goal is to retain the **_simplicity, isolation, and productivity_** for a very large and complex system.
+
+The book briefly talks about challenges of microservices like:
+
+1. Cost of infrustructure
+2. Development complexity for developers
+3. Lack of local reasoning for exploring and investigating features and code (some parts of the logic is delivered to another system. This leads to harder tracing of bugs.)
+
+### Go
+
+Some tips and reminders about go syntax, features and phlosophies:
+
+* Receivers can either be pointers (reference) or non-pointers (value).
+Pointer references are useful in the same way as normal pass-by-reference
+variables, should you want to modify struct, or if the size of struct is
+large, and so on. In the previous example of Area(), the c Circle
+receiver is passed by value. If we passed it as c * Circle, it would be
+pass by reference.
+
+* In Go, code is binned into packages. These packages provide a namespaces for code.
+
+
+* Go uses a variant of CSP with first-class channels.
+
+  Communicating Sequential Processes (CSP) is a formal language for describing patterns of interaction in concurrent systems.
+
+  CSP promotes the message-passing paradigm of communication, as compared to the shared memory and locks paradigm for communication.
