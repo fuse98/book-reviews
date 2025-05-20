@@ -105,3 +105,112 @@ pass by reference.
   Communicating Sequential Processes (CSP) is a formal language for describing patterns of interaction in concurrent systems.
 
   CSP promotes the message-passing paradigm of communication, as compared to the shared memory and locks paradigm for communication.
+
+
+* The Go way of object-orientation is : composition over inheritance.
+
+  For polymorphic behavior, Go uses interfaces and duck typing: "If it looks like a duck and quacks like a duck, it's a duck."
+
+  Duck typing implies that any class that has all of the methods that an interfaces advertises can be said to implement the said interface.
+
+
+At the end of this chapter writer suggests reading  *"Clean Architecture: A Craftsman's Guide to Software Structure and Design by Robert C.
+Martin"* for  a deeper understanding of software architecture.  
+
+
+## Chapter 2: Packaging Code
+
+This chapters talk about the organization of code in the two levels of:
+
+1. Object-orientation in Go
+2. Packages, dependencies and ...
+
+
+### Contracts
+
+A software contract is a formalized documentation of an interaction with a software
+component. Such as *interfaces, APIs and protocols*
+
+Things that they should have:
+* Change rarely
+* Versioned and backward compatible(as much as possible)
+* Include service level agreements(SLAs)
+
+### Object Orientation in Go
+
+Object orientation helps hide the implementation of behaviour behind a similar interface (not necessary the *interface* we know in code but in a more genral way.) and keeping a healthy **Contract**.
+
+Inheritance is feature to reduce code complexity and package similar behaviour into a group under a common interface (Parent).
+
+Inheritance, though useful, has its pitfalls:
+
+*  Often leads to a hierarchy of classes, and sometimes the behavior of the final object is spread across the hierarchy
+
+* Super classes can often be fragile, because one little change to a superclass can ripple out and affect many other places 
+
+Inheritance is one type of object orientaiton and an alternative is **composition**.
+
+- Inhertinace = an **_is a_** relationship
+
+- Composition = a **_has a_** relationship
+
+Compositions has this two parts that help create the smae advantages of the inheritance:
+
+* Classes implement an interface—which is the contract the base class offers.
+* Functionality reuse happens through having references to objects, rather than
+deriving from classes.
+
+The book states that:
+
+`Building objects and references through compositions allows you to delay the
+creation of objects until and unless they are needed`
+
+But to be fare this is also  achivable in an inheritance world (lazy objects). Plus one of the (or maybe the only thing) the book has to say against inheritance is the scattering logic and behaviour across different classes while this is also the case in composition as well where the different components implement the scattered behaviour.
+
+**TIP**
+
+One uses pointer recievers in the two following senarios:
+1. Wanting to actually modify the reciever.
+2. The struct is very large and a deep copy(Which is used every time a method with non-pointer reciever is called) is expensive.
+
+**TIP**
+
+Slices and maps act as references, so even passing them as value will allow mutation of the objects.
+
+
+#### Polymorphism
+
+Go enables polymorphism by **interface**s
+
+#### Embedding
+
+Embedding is a mechanism to allow the ability to borrow pieces from different structs and interfaces. It is the equivalent of multiple inheritance with non-virtual members.
+
+Let's call Base, struct embedded into a Derived struct. Like normal (public/protected) subclassing, the fields and methods of the Base class are directly available in the Derived struct. Internally, a hidden/anonymous field is created with the name of the base struct.
+
+Base fields and methods can be shadowed, if redefined in the derived class. Once shadowed, the only way to access the base member is to use the hidden field named as the base-struct-name.
+
+
+Because it is like the multi inheritance, the **_dimond of death_** problem is possible and is resolved by the compile errors when this ambiguity occures.
+
+
+### Packaging and modules
+
+Here the book is very out of touch from the latest trends of doing things(go mod) and talks about workspaces!
+
+Some good points are:
+
+Important thing when writing internal modules as common code between prijects are:
+* The configuration for the code should be externalized
+* This code should as far as possible, not handle errors on its own. It should translate library events into something meaningful related to the contract and emit them
+
+
+Book refers to **_table driven tests_** and **_subtest_** to run them concurrrently.
+
+
+--- 
+
+And finally a good gneral role of thumb:
+
+
+**Every technique/recommendation has a context, and when the recommendation is applied blindly, it can lead to developer frustration and, ultimately, lack of quality.**
