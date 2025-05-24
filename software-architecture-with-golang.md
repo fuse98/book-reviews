@@ -214,3 +214,55 @@ And finally a good gneral role of thumb:
 
 
 **Every technique/recommendation has a context, and when the recommendation is applied blindly, it can lead to developer frustration and, ultimately, lack of quality.**
+
+## Chapter 3: Design Patterns
+
+A design pattern is a description of a problem and a template of how to solve it.
+
+Design patterns can be roughly categorized into three areas:
+* Creational
+* Structural
+* Behavioral
+
+Two important things to keep in mind of each class and component are:
+* Responsibility assignment
+* Dependency management
+
+
+**Once for all: SOLID**
+
+- **S**ingle responsibility principle: One class should have one, and only one, responsibility.
+- **O**pen-Closed principle: You should be able to extend a class's behavior without modifying it.
+- **L**iskuv Substitution principle: The interface should be able to suffice for all structs that implement that interface
+- **I**nterface Segrigation principle: Many client-specific interfaces are better than one general-purpose interface.
+- **D**ependency inversion principle: Depend on abstractions, not on concretions.
+
+
+### Creational Design Patterns
+
+* **Factory method**: Simple helper method to create objects
+* **Builder**: When some logic is needed in creation of the objects
+* **Abstract factory**: When we want to create a group of related objects with different variations  
+* **Singleton**: Anti-pattern do not use (Introduces a global variable to the system).
+
+
+### Structural Design Patterns
+In software engineering, structural design patterns help delineate **_clean relationships_**
+between objects and simplify design.
+
+* **Adaptor**: An adaptor between a client that uses an interface and an Adaptee with an old or incompatible interface.
+* **Bridge**: ??
+* **Composite**
+* **Decorator**
+* **Proxy**: A proxy is essentially a class functioning as an interface to something else.
+* **Facade**: Simplifies multiple interfaces into a simple one
+
+### Behavioural Design Patterns
+
+Behavioral design patterns are design patterns that identify communication patterns
+among objects and provide solution templates for specific situations.
+
+* **Command**: When an object is used to represent
+a request (or actions) and encapsulate all information needed to process the same.
+* **Chain of Responsibility**: ??
+* **Mediator**: ??
