@@ -265,4 +265,13 @@ among objects and provide solution templates for specific situations.
 * **Command**: When an object is used to represent
 a request (or actions) and encapsulate all information needed to process the same.
 * **Chain of Responsibility**: ??
-* **Mediator**: ??
+* **Mediator**: ?? difference with adaptor?
+* **Memento**: capturing and storing the current state of an object so that it
+can be restored later on in a smooth manner(Undo)
+* **Observer**: one entity (subject) with state and several others (observers)
+that are interested in that state
+* **Visitor**: we want to do different things with elements (nodes) of an aggregate (array, tree, list, and so on).
+* **Strategy**: allow the user to change the algorithm used
+without changing the rest of the code. This is done with encapsulating the input and output of the algorithms into an interface.
+* **Template method**: A variation of the strategy pattern where the algorithm is broken to some steps and the steps are implemented differently
+* **State**: Change behaviour based on different state of an object.
