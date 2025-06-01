@@ -324,8 +324,9 @@ This can predict the performnace impact of operations when loading data
 
 These algorithems are best when the exact value for the query is not important but query is  for a huge number of elements and is some aggregated query(count, min, max ...). Example:
 * **Reservoir sampling is an algorithm/data structure that enables these types of queries.**
-* **An alternative data structure is called count-min sketch**
-* (Personal take): **Bloom Filter**
+* **Count-min sketch: upper bound of the minimum accurance of element**
+* (Personal example) **Bloom Filter: existance in set**
+* (Personal example) **HyperLogLog: estimate of total count of something**
 
 
 The way of storing data on database effect scalability:
