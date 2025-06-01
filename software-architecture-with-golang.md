@@ -275,3 +275,79 @@ that are interested in that state
 without changing the rest of the code. This is done with encapsulating the input and output of the algorithms into an interface.
 * **Template method**: A variation of the strategy pattern where the algorithm is broken to some steps and the steps are implemented differently
 * **State**: Change behaviour based on different state of an object.
+
+
+## Chapter 4: Scaling Applications
+
+Enabling propper(efficient) reactions to the changing pace of workload in a matter that hold up to the SLAs.
+
+Scalability depends on the following (and more):
+* Algorithems
+* DataStructures
+* Threading model
+* Local state
+
+
+Another three important matters descused in this chapters are:
+* Bottlenecks
+* Different options on how systems can be scaled
+* Scaling deployments
+
+### Algorithems
+
+Book talks about space and time complexity. And then talks about some general algorithms.
+
+#### Distributed Algorithems
+
+Some conditions make a problem hard to solve by reaching efficiency on algorithem alone. One must use the advantages deviding your workload on multiple machines. Some of these conditions are:
+
+**Sometimes, the dataset is so large that it cannot fit into the memory or disk of a single
+machine**
+
+Developing this is quite complex and has some tricky parts:
+* Automatic parallelization
+* Communication and coordination
+* Distribution
+* Optimization for network and disk access
+
+**Concept of Google's ReduceMap is introduced but I could ont capture the idea in the first read**
+
+
+
+### DataStructures
+
+Each action on different data structures have different time order. E.g: Worst time of binary search in BST vs Red/Black tree.
+This can predict the performnace impact of operations when loading data
+
+#### Probablistic data structures
+
+
+These algorithems are best when the exact value for the query is not important but query is  for a huge number of elements and is some aggregated query(count, min, max ...). Example:
+* **Reservoir sampling is an algorithm/data structure that enables these types of queries.**
+* **An alternative data structure is called count-min sketch**
+* (Personal take): **Bloom Filter**
+
+
+The way of storing data on database effect scalability:
+* complexity modeling of algorithms and data structures mentioned
+previously, having a large number of elements may make searching for a
+particular element inefficient. (Like queries without indexes in most DBs)
+* There are a lot of concurrent updates of the database. Typically, most databases
+err on the side of safety. This means some clients are locked while updates or
+reads are happening for another client.
+
+### Scalibility Bottlenecks
+Scalability bottlenecks are those system aspects that serialize (or choke) parallel
+operations.
+
+To demonstrate scalability bottlenecks and their solution two examples are given:
+* **C10K Problem**: Old web servers could not handle more than 10k concurrent conections. Solution: **eventing model**
+
+* **The Thundering Herd problem**
+
+
+
+### Personal Idea
+To use a bloom filter thingy for each complex query and save them in a persistance way. Each event passes these filters and updates them and aat the same time tells if this filter satisfies their request.
+
+
